@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router Management System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, sans-serif;
+            background: #fdf6fa;
+            color: #51404b;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 25px auto;
+        }
+
+        header {
+            background: #f3b6d2;
+            padding: 30px;
+            border-radius: 20px 20px 5px 20px;
+            color: #663b53;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 27px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .subtitle {
+            margin-top: 25px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #a34f7b;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #a34f7b;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 5px 20px 20px 20px;
+            border: 1px solid #f2d5e4;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 5px;
+            border-bottom: 1px dashed #eed5e2;
+            font-size: 14px;
+            gap: 10px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row strong {
+            color: #a34f7b;
+            text-align: right;
+        }
+
+        .status {
+            color: #239b75 !important;
+        }
+
+        .command-box {
+            background: white;
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            border-left: 5px solid #e9a4c5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .command-text p {
+            font-size: 13px;
+            color: #927b89;
+            margin: 0 0 8px;
+        }
+
+        code {
+            color: #a34f7b;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        button {
+            border: none;
+            padding: 10px 16px;
+            border-radius: 20px;
+            background: #e9a4c5;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #cf7eaa;
+        }
+
+        .copy-button {
+            background: #f9e5ef;
+            color: #a34f7b;
+            font-size: 12px;
+        }
+
+        .copy-button:hover {
+            background: #f2ccdf;
+        }
+
+        .run-button {
+            width: 100%;
+            margin-top: 12px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #b66b94;
+            font-size: 15px;
+        }
+
+        .run-button:hover {
+            background: #965176;
+        }
+
+        .error {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffe8e8;
+            color: #b42318;
+            border-radius: 10px;
+            border-left: 5px solid #e57373;
+        }
+
+        .success {
+            background: #e8f7ef;
+            color: #27805b;
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .result {
+            background: #fff;
+            padding: 18px;
+            border: 1px solid #f2d5e4;
+            border-radius: 12px;
+            margin-top: 12px;
+            overflow-x: auto;
+        }
+
+        .result h3 {
+            color: #a34f7b;
+            font-size: 14px;
+        }
+
+        .result pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #594a53;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 35px;
+            color: #b69aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 12px;
+            }
+
+            header {
+                padding: 23px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .command-box {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .info-row {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>♡ Router Management System</h1>
+        <p>Simple Cisco Router Monitoring Dashboard</p>
+
+        <div class="subtitle">
+            NETWORK CONTROL PANEL
+        </div>
+    </header>
+
+    <!-- Router Information -->
+    <div class="section">
+        <h2>01. Router Details</h2>
+
+        <div class="info-box">
+
+            <div class="info-row">
+                <span>Router IP Address</span>
+                <strong>192.168.10.111</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Connection Type</span>
+                <strong>Cisco IOS Telnet</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Port Number</span>
+                <strong>32770</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Connection Status</span>
+                <strong class="status">● Ready to Connect</strong>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Available Commands -->
+    <div class="section">
+        <h2>02. Available Commands</h2>
+
+        <div class="command-box">
+            <div class="command-text">
+                <p>View Router Information</p>
+                <code>show version</code>
+            </div>
+
+            <button class="copy-button"
+                onclick="copyCommand('show version')">
+                Copy
+            </button>
+        </div>
+
+        <div class="command-box">
+            <div class="command-text">
+                <p>Check Interface Status</p>
+                <code>show ip interface brief</code>
+            </div>
+
+            <button class="copy-button"
+                onclick="copyCommand('show ip interface brief')">
+                Copy
+            </button>
+        </div>
+
+        <div class="command-box">
+            <div class="command-text">
+                <p>View Active Configuration</p>
+                <code>show running-config</code>
+            </div>
+
+            <button class="copy-button"
+                onclick="copyCommand('show running-config')">
+                Copy
+            </button>
+        </div>
+
+        <form action="/" method="POST">
+            <button type="submit" class="run-button">
+                Run All Commands →
+            </button>
+        </form>
+    </div>
+
+    <!-- Error Message -->
+    {% if error %}
+    <div class="error">
+        <strong>Connection Error</strong>
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Command Results -->
+    {% if results %}
+    <div class="section">
+        <h2>03. Command Results</h2>
+
+        <div class="success">
+            ✓ Commands have been executed.
+        </div>
+
+        {% for command, output in results.items() %}
+        <div class="result">
+            <h3>{{ command }}</h3>
+            <pre>{{ output }}</pre>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+    <footer>
+        ♡ Router Management System | Network Diagnostics
+    </footer>
+
+</div>
+
+<script>
+    function copyCommand(command) {
+        navigator.clipboard.writeText(command)
+            .then(function() {
+                alert("Command copied successfully!");
+            })
+            .catch(function() {
+                alert("Unable to copy command.");
+            });
+    }
+</script>
+
+</body>
+</html>
